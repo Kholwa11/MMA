@@ -1,0 +1,13 @@
+{
+  "name": "mma-landing",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "npx vite",
+    "build": "mkdir -p dist && cp index.html app.jsx dist/ && cp -r assets dist/"
+  },
+  "devDependencies": {
+    "vite": "latest"
+  }
+}
