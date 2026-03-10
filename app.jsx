@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'https://esm.sh/react@18.2.0';
 import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
-import { HardHat, Building2, Wrench, ChevronDown, CheckCircle2, Factory, Activity, Truck, Hammer, PenTool, BarChart } from 'https://esm.sh/lucide-react@0.292.0?deps=react@18.2.0';
+import { HardHat, Building2, Wrench, ChevronDown, CheckCircle2, Factory, Activity, Truck, Hammer, PenTool, BarChart, X } from 'https://esm.sh/lucide-react@0.292.0?deps=react@18.2.0';
 import gsap from 'https://esm.sh/gsap@3.12.2';
-import { motion, useInView } from 'https://esm.sh/framer-motion@10.16.4?deps=react@18.2.0,react-dom@18.2.0';
+import { motion, useInView, AnimatePresence } from 'https://esm.sh/framer-motion@10.16.4?deps=react@18.2.0,react-dom@18.2.0';
 
 // Keyword Highlighting Component (Scroll triggered)
 const HighlightText = ({ text }) => {
@@ -212,10 +212,131 @@ const ObsidianSpotlight = () => {
     );
 };
 
+const ContactOverlay = ({ isOpen, onClose }) => {
+    return (
+        <AnimatePresence>
+            {isOpen && (
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, transition: { delay: 0.3 } }}
+                    className="fixed inset-0 z-[100] bg-paper flex flex-col items-center justify-center p-8 overflow-y-auto"
+                >
+                    <button
+                        onClick={onClose}
+                        className="absolute top-8 right-8 text-dark/50 hover:text-dark transition-colors"
+                    >
+                        <X size={32} />
+                    </button>
+
+                    <div className="w-full max-w-2xl mx-auto flex flex-col items-center">
+                        <div className="text-center mb-16 relative z-20">
+                            <motion.h2 
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1, duration: 0.6 }}
+                                className="font-heading text-3xl md:text-5xl font-medium text-dark/60 tracking-tight"
+                            >
+                                The Construction Journey
+                            </motion.h2>
+                            <motion.h1
+                                layoutId="contact-heading"
+                                className="font-heading text-5xl md:text-7xl font-extrabold text-dark tracking-tight"
+                            >
+                                Starts Here.
+                            </motion.h1>
+                        </div>
+
+                        {/* Floating Cards Container */}
+                        <div className="w-full relative min-h-[500px] flex items-center justify-center">
+
+                            {/* Center Lead: Phone Number */}
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+                                className="absolute z-30 bg-dark text-paper p-8 rounded-[2rem] shadow-2xl border border-moss/20 flex flex-col items-center gap-4 hover:shadow-[0_0_40px_rgba(78,104,51,0.3)] hover:-translate-y-2 transition-all duration-300"
+                            >
+                                <div className="bg-moss/20 p-4 rounded-full">
+                                    <Activity size={32} className="text-moss" />
+                                </div>
+                                <div className="text-center">
+                                    <p className="font-mono text-xs text-moss tracking-[0.2em] uppercase mb-2">Direct Line</p>
+                                    <p className="font-heading text-3xl font-extrabold tracking-tight">+27 81 843 2771</p>
+                                </div>
+                            </motion.div>
+
+                            {/* Top Left: Founder */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -50, y: -20 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ delay: 0.4, type: "spring", stiffness: 80 }}
+                                className="absolute top-[5%] left-[5%] md:left-[10%] z-20 bg-white p-4 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform"
+                            >
+                                <img src="./assets/founder.jpg" alt="Founder" className="w-16 h-16 rounded-full object-cover border-2 border-moss/20" />
+                                <div>
+                                    <h4 className="font-heading font-bold text-dark text-sm">Mr. Malerotho Mokgaudi Isaac</h4>
+                                    <p className="font-mono text-[10px] text-dark/50 uppercase tracking-widest mt-1">Director & Founder</p>
+                                </div>
+                            </motion.div>
+
+                            {/* Top Right: Registration */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 50, y: -20 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ delay: 0.5, type: "spring", stiffness: 80 }}
+                                className="absolute top-[15%] right-[5%] md:right-[15%] z-20 bg-white p-5 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform"
+                            >
+                                <div className="bg-paper p-3 rounded-full">
+                                    <CheckCircle2 size={24} className="text-moss" />
+                                </div>
+                                <div>
+                                    <p className="font-mono text-[10px] text-dark/50 uppercase tracking-widest mb-1">Corporate Registry</p>
+                                    <h4 className="font-heading font-bold text-dark text-sm">REG: 2021/486187/07</h4>
+                                </div>
+                            </motion.div>
+
+                            {/* Bottom Left: HQ */}
+                            <motion.div
+                                initial={{ opacity: 0, x: -40, y: 40 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ delay: 0.6, type: "spring", stiffness: 80 }}
+                                className="absolute bottom-[15%] left-[2%] md:left-[5%] z-20 bg-white p-5 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform"
+                            >
+                                <div className="bg-paper p-3 rounded-full">
+                                    <Building2 size={24} className="text-moss" />
+                                </div>
+                                <div>
+                                    <h4 className="font-heading font-bold text-dark text-sm pb-1">Headquarters</h4>
+                                    <p className="font-body text-xs text-dark/70">33575 N. Mokhehle Str</p>
+                                    <p className="font-body text-xs text-dark/70">Pretoria</p>
+                                </div>
+                            </motion.div>
+
+                            {/* Bottom Right: Ops */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 40, y: 40 }}
+                                animate={{ opacity: 1, x: 0, y: 0 }}
+                                transition={{ delay: 0.7, type: "spring", stiffness: 80 }}
+                                className="absolute bottom-[20%] right-[5%] md:right-[10%] z-20 bg-white p-5 rounded-full shadow-xl border border-dark/5 flex items-center gap-3 hover:-translate-y-1 transition-transform"
+                            >
+                                <span className="text-xl">🚜</span>
+                                <span className="font-heading font-bold text-dark text-sm">Heavy Civil Operations</span>
+                            </motion.div>
+
+                        </div>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+};
+
 const App = () => {
     const navRef = useRef(null);
 
     const [hasScrolled, setHasScrolled] = useState(false);
+    const [isContactOpen, setIsContactOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -238,6 +359,7 @@ const App = () => {
 
     return (
         <main className="min-h-screen relative font-body text-dark overflow-x-hidden selection:bg-moss/30 selection:text-dark">
+            <ContactOverlay isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
 
             {/* Global Fixed Architectural Blueprint Grid */}
             <div className="fixed inset-0 z-[-1] blueprint-bg opacity-[0.3] pointer-events-none" />
@@ -282,8 +404,11 @@ const App = () => {
                         <p className="text-[10px] text-moss font-mono tracking-widest">EST. 1998</p>
                     </div>
                 </div>
-                <button className={`bg-dark text-paper px-6 py-2.5 font-mono text-xs tracking-[0.2em] hover:bg-moss transition-all duration-700 pointer-events-auto ${hasScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-                    ENGAGE
+                <button 
+                    onClick={() => setIsContactOpen(true)}
+                    className={`bg-dark text-paper px-6 py-2.5 hover:bg-moss transition-all duration-700 pointer-events-auto ${hasScrolled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
+                >
+                    <motion.div layoutId="contact-heading" className="font-mono text-xs tracking-[0.2em]">CONTACT</motion.div>
                 </button>
             </nav>
 
