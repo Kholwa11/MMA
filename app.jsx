@@ -247,81 +247,90 @@ const ContactOverlay = ({ isOpen, onClose }) => {
                             </motion.h1>
                         </div>
 
-                        <div className="w-full max-w-5xl mx-auto relative min-h-[750px] md:min-h-[650px]">
-                            <div className="relative h-full flex flex-col md:block items-center justify-center p-4">
+                        <div className="w-full max-w-6xl mx-auto mt-4 md:mt-8">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center p-4">
                                 
-                                {/* Center Card: Phone Number (Moves to top on mobile) */}
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
-                                    className="relative md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-30 bg-dark text-paper p-8 rounded-[2.5rem] shadow-2xl border border-moss/20 flex flex-col items-center gap-4 hover:shadow-[0_0_50px_rgba(78,104,51,0.4)] hover:-translate-y-2 transition-all duration-300 mb-8 md:mb-0 w-full max-w-sm md:w-auto"
-                                >
-                                    <div className="bg-moss/20 p-4 rounded-full">
-                                        <Activity size={32} className="text-moss" />
-                                    </div>
-                                    <div className="text-center">
-                                        <p className="font-mono text-[10px] text-moss tracking-[0.3em] uppercase mb-2 font-bold">Direct Line</p>
-                                        <p className="font-heading text-3xl font-extrabold tracking-tight">+27 81 843 2771</p>
-                                    </div>
-                                </motion.div>
+                                {/* Left Column */}
+                                <div className="flex flex-col gap-6 md:gap-12 items-center md:items-end w-full">
+                                    {/* Founder Card */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -50 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.4, type: "spring" }}
+                                        className="bg-white p-4 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform w-full max-w-sm"
+                                    >
+                                        <img src="./assets/founder.jpg" alt="Founder" className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-moss/20 shrink-0" />
+                                        <div>
+                                            <h4 className="font-heading font-bold text-dark text-sm">Mr. Malerotho Mokgaudi Isaac</h4>
+                                            <p className="font-mono text-[10px] text-dark/50 uppercase tracking-widest mt-1">Director & Founder</p>
+                                        </div>
+                                    </motion.div>
 
-                                {/* Founder Card */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: -50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.4, type: "spring" }}
-                                    className="relative md:absolute md:top-0 md:left-0 z-20 bg-white p-4 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform mb-6 md:mb-0 w-full max-w-sm md:w-auto"
-                                >
-                                    <img src="./assets/founder.jpg" alt="Founder" className="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border-2 border-moss/20" />
-                                    <div>
-                                        <h4 className="font-heading font-bold text-dark text-sm">Mr. Malerotho Mokgaudi Isaac</h4>
-                                        <p className="font-mono text-[10px] text-dark/50 uppercase tracking-widest mt-1">Director & Founder</p>
-                                    </div>
-                                </motion.div>
+                                    {/* HQ Card */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: -40 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.6, type: "spring" }}
+                                        className="bg-white p-5 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform w-full max-w-sm"
+                                    >
+                                        <div className="bg-paper p-3 rounded-full shrink-0">
+                                            <Building2 size={24} className="text-moss" />
+                                        </div>
+                                        <div>
+                                            <h4 className="font-heading font-bold text-dark text-sm pb-1">Headquarters</h4>
+                                            <p className="font-body text-[11px] md:text-xs text-dark/70 font-light">33575 N. Mokhehle Str, Pretoria</p>
+                                        </div>
+                                    </motion.div>
+                                </div>
 
-                                {/* Registration Card */}
-                                <motion.div
-                                    initial={{ opacity: 0, x: 50 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.5, type: "spring" }}
-                                    className="relative md:absolute md:top-10 md:right-0 z-20 bg-white p-5 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform mb-6 md:mb-0 w-full max-w-sm md:w-auto"
-                                >
-                                    <div className="bg-paper p-3 rounded-full">
-                                        <CheckCircle2 size={24} className="text-moss" />
-                                    </div>
-                                    <div>
-                                        <p className="font-mono text-[10px] text-dark/50 uppercase tracking-widest mb-1">Corporate Registry</p>
-                                        <h4 className="font-heading font-bold text-dark text-sm">REG: 2021/486187/07</h4>
-                                    </div>
-                                </motion.div>
+                                {/* Center Column */}
+                                <div className="flex justify-center z-30 order-first md:order-none">
+                                    {/* Center Card: Phone Number */}
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+                                        className="bg-dark text-paper p-8 rounded-[2.5rem] shadow-2xl border border-moss/20 flex flex-col items-center gap-4 hover:shadow-[0_0_50px_rgba(78,104,51,0.4)] hover:-translate-y-2 transition-all duration-300 w-full max-w-sm"
+                                    >
+                                        <div className="bg-moss/20 p-4 rounded-full">
+                                            <Activity size={32} className="text-moss" />
+                                        </div>
+                                        <div className="text-center">
+                                            <p className="font-mono text-[10px] text-moss tracking-[0.3em] uppercase mb-2 font-bold">Direct Line</p>
+                                            <p className="font-heading text-2xl md:text-3xl font-extrabold tracking-tight whitespace-nowrap">+27 81 843 2771</p>
+                                        </div>
+                                    </motion.div>
+                                </div>
 
-                                {/* HQ Card */}
-                                <motion.div
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.6, type: "spring" }}
-                                    className="relative md:absolute md:bottom-2 md:left-0 z-20 bg-white p-5 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform mb-6 md:mb-0 w-full max-w-sm md:w-auto"
-                                >
-                                    <div className="bg-paper p-3 rounded-full">
-                                        <Building2 size={24} className="text-moss" />
-                                    </div>
-                                    <div>
-                                        <h4 className="font-heading font-bold text-dark text-sm pb-1">Headquarters</h4>
-                                        <p className="font-body text-[11px] md:text-xs text-dark/70 font-light">33575 N. Mokhehle Str, Pretoria</p>
-                                    </div>
-                                </motion.div>
+                                {/* Right Column */}
+                                <div className="flex flex-col gap-6 md:gap-12 items-center md:items-start w-full">
+                                    {/* Registration Card */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: 50 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.5, type: "spring" }}
+                                        className="bg-white p-5 rounded-3xl shadow-xl border border-dark/5 flex items-center gap-4 hover:-translate-y-1 transition-transform w-full max-w-sm"
+                                    >
+                                        <div className="bg-paper p-3 rounded-full shrink-0">
+                                            <CheckCircle2 size={24} className="text-moss" />
+                                        </div>
+                                        <div>
+                                            <p className="font-mono text-[10px] text-dark/50 uppercase tracking-widest mb-1">Corporate Registry</p>
+                                            <h4 className="font-heading font-bold text-dark text-sm">REG: 2021/486187/07</h4>
+                                        </div>
+                                    </motion.div>
 
-                                {/* Operations Card */}
-                                <motion.div
-                                    initial={{ opacity: 0, y: 50 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.7, type: "spring" }}
-                                    className="relative md:absolute md:bottom-6 md:right-0 z-20 bg-white p-5 rounded-full shadow-xl border border-dark/5 flex items-center gap-3 hover:-translate-y-1 transition-transform w-full max-w-sm md:w-auto"
-                                >
-                                    <span className="text-xl">🚜</span>
-                                    <span className="font-heading font-bold text-dark text-sm">Heavy Civil Operations</span>
-                                </motion.div>
+                                    {/* Operations Card */}
+                                    <motion.div
+                                        initial={{ opacity: 0, x: 50 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: 0.7, type: "spring" }}
+                                        className="bg-white p-5 rounded-full shadow-xl border border-dark/5 flex items-center gap-3 hover:-translate-y-1 transition-transform w-full max-w-sm md:w-max"
+                                    >
+                                        <span className="text-xl shrink-0">🚜</span>
+                                        <span className="font-heading font-bold text-dark text-sm pr-2">Heavy Civil Operations</span>
+                                    </motion.div>
+                                </div>
 
                             </div>
                         </div>
