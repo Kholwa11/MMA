@@ -429,8 +429,7 @@ const App = () => {
                     <motion.div
                         layoutId="main-logo"
                         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                        className="logo-container pointer-events-auto relative rounded-[2rem] p-4 bg-white/5 backdrop-blur-sm border border-moss/20 shadow-[0_0_80px_rgba(78,104,51,0.8)]"
-                        style={{ width: '40vw', maxWidth: '32rem' }}
+                        className="logo-container pointer-events-auto relative rounded-[2rem] p-4 bg-white/5 backdrop-blur-sm border border-moss/20 shadow-[0_0_80px_rgba(78,104,51,0.8)] w-[85vw] md:w-[40vw] max-w-[32rem]"
                     >
                         {/* Dynamic Green Glow Behind Video */}
                         <div className="absolute inset-0 bg-moss/50 blur-[80px] rounded-[3rem] z-[-1] animate-pulse"></div>
