@@ -224,9 +224,9 @@ const ContactOverlay = ({ isOpen, onClose }) => {
                 >
                     <button
                         onClick={onClose}
-                        className="absolute top-8 right-8 text-dark/50 hover:text-dark transition-colors"
+                        className="fixed top-6 right-6 z-[110] text-dark/70 hover:text-dark transition-all p-2 bg-white/50 backdrop-blur-md rounded-full shadow-lg"
                     >
-                        <X size={32} />
+                        <X size={24} className="md:w-8 md:h-8" />
                     </button>
 
                     <div className="w-full max-w-6xl mx-auto flex flex-col items-center mt-12 md:mt-0 relative z-20">
